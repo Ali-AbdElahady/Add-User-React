@@ -28,13 +28,13 @@ const AddUser = ({ onSubmitHandler }) => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    if (userInput.username.length > 5) {
+    if (userInput.username.length < 5) {
       setError({
         title: "Invalid username",
         message: "please enter valid username",
       });
     }
-    if (userInput.age.length > 0 || +userInput.age < 5) {
+    if (userInput.age.length < 0 || +userInput.age < 5) {
       setError({
         title: "Invalid age",
         message: "please enter valid age",
@@ -43,7 +43,7 @@ const AddUser = ({ onSubmitHandler }) => {
     if (
       userInput.username.length > 5 &&
       userInput.age.length > 0 &&
-      +userInput.age < 1
+      +userInput.age > 1
     ) {
       onSubmitHandler(userInput);
       formReset();
